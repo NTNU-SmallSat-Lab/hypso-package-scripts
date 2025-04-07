@@ -5,7 +5,7 @@ import sys
 import numpy as np
 
 from pathlib import Path
-from hypso import Hypso1
+from hypso import Hypso
 
 from hypso.write import write_l1d_nc_file
 
@@ -20,7 +20,7 @@ def main(l1a_nc_path, lats_path=None, lons_path=None):
 
     nc_file = Path(l1a_nc_path)
 
-    satobj = Hypso1(path=nc_file, verbose=True)
+    satobj = Hypso(path=nc_file, verbose=True)
 
 
     # Run indirect georeferencing
