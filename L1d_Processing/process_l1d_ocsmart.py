@@ -78,6 +78,7 @@ if __name__ == "__main__":
 
     folder_name = os.path.basename(base_path)
     l1a_nc_path = os.path.join(base_path, f"{folder_name}-l1a.nc")
+    l1d_nc_path = os.path.join(base_path, f"{folder_name}-l1d.nc")
     lats_path = os.path.join(base_path, "processing-temp", "latitudes_indirectgeoref.dat")
     lons_path = os.path.join(base_path, "processing-temp", "longitudes_indirectgeoref.dat") 
 
@@ -91,4 +92,9 @@ if __name__ == "__main__":
 
     main(l1a_nc_path, lats_path, lons_path)
 
+    dst_dir = "/home/_shared/ARIEL/atmospheric_correction/OC-SMART/OC-SMART_with_HYPSO/L2/"
+    dst_file = os.path.join(dst_dir, "HYPSO2_HSI_" + str(folder_name) + "-l1d.nc")
+
+    import shutil
+    shutil.copy2(l1d_nc_path, dst_file)
 
