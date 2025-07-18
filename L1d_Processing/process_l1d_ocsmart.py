@@ -45,6 +45,9 @@ def main(l1a_nc_path, lats_path=None, lons_path=None):
             # Directly provide the indirect lat/lons loaded from the file. This function will run the track geometry computations.
             satobj.run_indirect_georeferencing(latitudes=lats, longitudes=lons)
 
+            print(satobj.latitudes_indirect)
+            print(satobj.longitudes_indirect)
+
             satobj.generate_l1b_cube()
             satobj.generate_l1c_cube()
             satobj.generate_l1d_cube(use_indirect_georef=True)
@@ -54,6 +57,9 @@ def main(l1a_nc_path, lats_path=None, lons_path=None):
             print('Indirect georeferencing has failed. Defaulting to direct georeferencing.')
 
             satobj.run_direct_georeferencing()
+            satobj.generate_l1b_cube()
+            satobj.generate_l1c_cube()
+            satobj.generate_l1d_cube(use_indirect_georef=False)
 
     else:
         satobj.run_direct_georeferencing()
@@ -92,7 +98,7 @@ if __name__ == "__main__":
 
     main(l1a_nc_path, lats_path, lons_path)
 
-    dst_dir = "/home/_shared/ARIEL/atmospheric_correction/OC-SMART/OC-SMART_with_HYPSO/L2/"
+    dst_dir = "/home/_shared/ARIEL/atmospheric_correction/OC-SMART/OC-SMART_with_HYPSO/L1B/"
     dst_file = os.path.join(dst_dir, "HYPSO2_HSI_" + str(folder_name) + "-l1d.nc")
 
     import shutil
