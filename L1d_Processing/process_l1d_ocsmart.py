@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
     main(l1a_nc_path, lats_path, lons_path)
 
-    dst_dir = "/home/_shared/ARIEL/atmospheric_correction/OC-SMART/OC-SMART_with_HYPSO/L1B/"
+    dst_dir = "/home/_shared/ARIEL/atmospheric_correction/OC-SMART/OC-SMART_with_HYPSO_9-29-25_release/L1B/"
     dst_file = os.path.join(dst_dir, "HYPSO2_HSI_" + str(folder_name) + "-l1d.nc")
 
     import shutil
